@@ -8,8 +8,8 @@ import (
 	"sparkcito/util"
 )
 
-func client4workers(workerReq util.SearchWorkerReq) {
-	c, err := net.Dial("tcp", ":9990")
+func client4workers(workerReq util.SearchWorkerReq,port string) {
+	c, err := net.Dial("tcp", ":"+port)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -33,11 +33,18 @@ func handlePrincipalClient(c net.Conn) {
 
 		workerReq:=util.SearchWorkerReq{
 			Palabra: clientReq.Palabra,
-			Archivo: "./data/enwiki_1.xml",
+			Archivo: "enwiki_1.xml",
 		}
+		go client4workers(workerReq,"9990")
 
-		go client4workers(workerReq)
+		workerReq.Archivo="enwiki_2.xml"
+		go client4workers(workerReq,"9991")
 
+		workerReq.Archivo="enwiki_3.xml"
+		go client4workers(workerReq,"9992")
+
+		workerReq.Archivo="enwiki_4.xml"
+		go client4workers(workerReq,"9993")
 	}
 }
 

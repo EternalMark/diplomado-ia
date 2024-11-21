@@ -4,6 +4,7 @@ import (
 	"encoding/gob"
 	"fmt"
 	"net"
+	"os"
 
 	"sparkcito/util"
 )
@@ -20,7 +21,7 @@ func handleMasterServer(c net.Conn) {
 
 		var res util.RespuestaBuscaPalabra
 		res = util.BuscaPalabra(workerReq.Archivo, workerReq.Palabra)
-		// res = util.BuscaPalabra("./data/enwiki_1.xml", "Spider")
+		// res = util.BuscaPalabra("enwiki_1.xml", "Spider")
 
 		fmt.Println("Respuesta: ", res)
 	}
@@ -43,7 +44,9 @@ func worker(port string) {
 }
 
 func main() {
-	port := ":9990"
+	arg := os.Args[1]
+
+	port := ":"+arg
 	go worker(port)
 	fmt.Println("Worker Server Iniciado en el puerto", port)
 	var input string

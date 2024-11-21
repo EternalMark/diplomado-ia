@@ -13,7 +13,7 @@ func BuscaPalabra(archivo string, palabra string) RespuestaBuscaPalabra {
 	lines := 0
 	c := 0
 	start := time.Now()
-	file, err := os.Open(archivo)
+	file, err := os.Open("./data/"+archivo)
 	// file, err := os.Open("./data/enwiki_1.xml")
 
 	if err != nil {
