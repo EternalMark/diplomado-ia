@@ -10,18 +10,20 @@ Este proyecto tiene por objetivo leer toda la información de la wikipedia busca
 
     Ej. "./data/enwiki_1.xml"
 
-* Ejecutar los servicios workers (workerServer.go) en varios dipositivos que esten conectados a una misma red. Insertando como parámetro el puerto. 
-    
+* Ejecutar los servicios workers (workerServer.go) en varios dispositivos que esten conectados a una misma red. Insertando como parámetro el puerto. 
+    ```bash
     go run workerServer.go 9990
+    ```
+    También es posible ejecutar muchos workers en la misma computadora pero con diferente puerto ;)
 
 * Ejecutar el servicio master (masterServer.go) en el dispositivo principal. Este debe conocer de antemano las ips y puertos de todos los workers
-    
+    ```bash
     go run masterServer.go
-
+    ```
 * Ejecutar el programa cliente (principalClient.go). En este programa colocar la ip y puerto del servicio master y enviar la palabra que se desea buscar.
-    
+    ```bash
     go run principalClient.go
-
+    ```
 
 ## TO DO
 * Al iniciar el master revisar el estatus de todos los workers
