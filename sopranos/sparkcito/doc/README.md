@@ -20,6 +20,7 @@ Este proyecto tiene por objetivo leer toda la información de la wikipedia busca
     ```bash
     go run masterServer.go
     ```
+    El master server se ejecuta en el puerto 9999. Causará problemas si levantas algún worker en la misma computadora en este puerto. Puedes cambiarlo en el código.
 * Ejecutar el programa cliente (principalClient.go). En este programa colocar la ip y puerto del servicio master y enviar la palabra que se desea buscar.
     ```bash
     go run principalClient.go
